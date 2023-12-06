@@ -2,10 +2,6 @@
 import { siteMeta } from "../libs/constants";
 const { siteTitle, siteDesc, siteUrl } = siteMeta;
 
-import faviconImg from "../img/common/favicon.png";
-import ogpImg from "〇〇.jp/img/common/ogp.gif";
-import appleImg from "../img/common/apple-touch-icon.png";
-
 export interface Props {
   pageTitle?: string;
   pageDesc?: string;
@@ -21,9 +17,7 @@ export interface Props {
   };
 }
 
-const pageTitle = Astro.props?.pageTitle
-  ? `${Astro.props.pageTitle}｜${siteTitle}`
-  : siteTitle;
+const pageTitle = Astro.props?.pageTitle ? `${Astro.props.pageTitle}｜${siteTitle}` : siteTitle;
 
 const pageDesc = Astro.props?.pageDesc ?? siteDesc;
 
@@ -36,10 +30,7 @@ const metaRobots = Astro.props?.pageNoindex;
 ---
 
 <meta charset="UTF-8" />
-<meta
-  name="viewport"
-  content="width=device-width,initial-scale=1.0,minimum-scale=1.0"
-/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="generator" content={Astro.generator} />
 <title>{pageTitle}</title>

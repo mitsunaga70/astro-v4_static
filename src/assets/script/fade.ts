@@ -2,7 +2,7 @@
 
 const fadeIn = document.querySelectorAll(".fadeIn");
 const fadeInFunc = () => {
-  const scrollY = window.pageYOffset;
+  const scrollY = window.scrollY;
   const docH = document.documentElement.scrollHeight;
   for (let i = 0; i < fadeIn.length; i++) {
     const triggerMargin = 80;
