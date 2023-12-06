@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { pageInfo } from "../libs/constants";
+const pageKey = "top";
+const { pageTitle } = pageInfo[pageKey];
+
+const title = pageTitle;
+const className = "pageTop";
+---
+
+<Layout pageTitle={title} pageClass={className}>
+  <p class="">TOP</p>
+  <a href="/about/">about</a>
+</Layout>
+<style lang="scss">
+  p {
+    @include bp(sp) {
+    }
+  }
+</style>
