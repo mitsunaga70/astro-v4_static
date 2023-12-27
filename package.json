@@ -12,15 +12,14 @@
     "build:prod": "astro check && env-cmd -f .env.production astro build"
   },
   "dependencies": {
-    "@astrojs/check": "^0.3.1",
-    "@astrojs/sitemap": "^3.0.3",
-    "astro": "^4.0.2",
+    "@astrojs/check": "^0.3.3",
+    "astro": "^4.0.6",
+    "typescript": "^5.3.3",
     "env-cmd": "^10.1.0",
     "gsap": "^3.12.3",
     "postcss-merge-queries": "^1.0.3",
     "sass": "^1.69.5",
-    "swiper": "^11.0.5",
-    "typescript": "^5.3.2"
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "prettier": "^3.1.0",

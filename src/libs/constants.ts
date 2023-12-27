@@ -3,11 +3,12 @@ type siteType = {
   siteDesc: string;
   siteUrl: string;
 };
+const apiUrl = import.meta.env.PUBLIC_SITE_URL;
 
 export const siteMeta: siteType = {
   siteTitle: "サイトタイトル",
   siteDesc: "ディスクリプションが入ります。",
-  siteUrl: "https://〇〇.jp/",
+  siteUrl: apiUrl,
 };
 
 export const pageInfo = {

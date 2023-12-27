@@ -21,9 +21,9 @@ const pageTitle = Astro.props?.pageTitle ? `${Astro.props.pageTitle}｜${siteTit
 
 const pageDesc = Astro.props?.pageDesc ?? siteDesc;
 
-const faviconSrc = new URL("/img/favicon.png", siteUrl);
-const ogpImageURL = new URL("/img/ogp.gif", siteUrl);
-const appleSrc = new URL("/img/apple-touch-icon.png", siteUrl);
+const faviconSrc = siteUrl + "/jinji/urban/img/favicon.ico";
+const ogpImageURL = siteUrl + "/jinji/urban/img/ogp.png";
+const appleSrc = siteUrl + "/jinji/urban/img/apple-touch-icon.png";
 
 const canonicalURL = new URL(Astro.url.pathname, siteUrl);
 const metaRobots = Astro.props?.pageNoindex;

@@ -1,10 +1,60 @@
+@use "sass:math";
 .fadeIn {
   opacity: 0;
-  visibility: hidden;
-  transform: translate(0, 20px);
-  transition: opacity 0.7s linear, visibility 0.7s linear, transform 0.7s linear;
+  // visibility: hidden;
+  transform: translateY(6rem);
+  transition:
+    opacity 1.3s,
+    filter 0.6s linear,
+    transform 1.3s cubic-bezier(0.23, 1, 0.32, 1);
+  // filter: blur(8px);
 
+  &.late1 {
+    transition-delay: 0.3s;
+  }
 
+  &.late2 {
+    transition-delay: 0.4s;
+  }
+
+  &.late3 {
+    transition-delay: 0.5s;
+  }
+
+  &.late4 {
+    transition-delay: 0.6s;
+  }
+
+  &.late5 {
+    transition-delay: 0.7s;
+  }
+
+  &.late6 {
+    transition-delay: 0.8s;
+  }
+
+  &.late7 {
+    transition-delay: 0.9s;
+  }
+
+  &.late8 {
+    transition-delay: 1s;
+  }
+  &.is-fade {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+.fadeBlur {
+  opacity: 0;
+  // visibility: hidden;
+
+  transition:
+    opacity 1s ease-out,
+    filter 1.3s cubic-bezier(0.65, 0, 0.35, 1);
+  filter: blur(25px);
 
   &.late1 {
     transition-delay: 0.3s;
@@ -38,43 +88,9 @@
     transition-delay: 1s;
   }
 
-  @include bp(pc) {
-    &.pcLate1 {
-      transition-delay: 0.3s;
-    }
-
-    &.pcLate2 {
-      transition-delay: 0.4s;
-    }
-
-    &.pcLate3 {
-      transition-delay: 0.5s;
-    }
-
-    &.pcLate4 {
-      transition-delay: 0.6s;
-    }
-
-    &.pcLate5 {
-      transition-delay: 0.7s;
-    }
-
-    &.pcLate6 {
-      transition-delay: 0.8s;
-    }
-
-    &.pcLate7 {
-      transition-delay: 0.9s;
-    }
-
-    &.pcLate8 {
-      transition-delay: 1s;
-    }
-  }
-
   &.is-fade {
     opacity: 1;
     visibility: visible;
-    transform: translate(0, 0);
+    filter: blur(0px);
   }
 }

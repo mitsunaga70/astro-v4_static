@@ -13,6 +13,97 @@
 @mixin sansserif {
   font-family: "Heebo", sans-serif;
 }
+// H1〜H4
+@mixin h_style() {
+  // 共通
+  @include maruGothic();
+}
+@mixin pc_h($type) {
+  @if $type == 1 {
+    font-size: 4.6rem;
+    line-height: 1.8;
+    font-weight: $weight-m;
+  } @else if $type == 2 {
+    font-size: 4rem;
+    line-height: 1.8;
+    font-weight: $weight-m;
+  } @else if $type == 3 {
+    font-size: 2.6rem;
+    line-height: 1.6;
+    font-weight: $weight-b;
+  } @else if $type == 4 {
+    font-size: 2.4rem;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+    font-weight: $weight-b;
+  } @else if $type == 5 {
+    font-size: 2rem;
+    line-height: 1.6;
+    font-weight: $weight-b;
+  } @else if $type == 6 {
+    font-size: 1.8rem;
+    line-height: 1.6;
+    font-weight: $weight-b;
+  }
+}
+@mixin sp_h($type) {
+  @if $type == 1 {
+    font-size: 3.4rem;
+    line-height: 1.2;
+  } @else if $type == 2 {
+    font-size: 3rem;
+    letter-spacing: 1.2;
+  } @else if $type == 3 {
+    font-size: 2.5rem;
+    line-height: 1.5;
+  } @else if $type == 4 {
+    font-size: 2.2rem;
+    line-height: 1.4;
+  } @else if $type == 5 {
+    font-size: 2rem;
+    line-height: 1.2;
+  } @else if $type == 6 {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+}
+
+@mixin h($type: "", $wid: "") {
+  @for $i from 1 through 6 {
+    @if $type == $i {
+      @include h_style();
+      @if $wid == "" {
+        @include pc_h($i);
+        @include bp(sp) {
+          @include sp_h($i);
+        }
+      }
+      @if $wid == "pc" {
+        @include pc_h($i);
+      }
+      @if $wid == "sp" {
+        @include sp_h($i);
+      }
+    }
+  }
+}
+
+// text
+@mixin txt($type: "", $siz: "") {
+  @if $type== "body" {
+    font-weight: $weight-b;
+    letter-spacing: 0em;
+    line-height: 1.6;
+    font-size: 1.6rem;
+    @if $siz== "" or $siz == main {
+      line-height: 1.6;
+    } @else if $siz == main_bold {
+      font-weight: $weight-b;
+    } @else if $siz == main_link {
+      text-decoration: underline;
+    }
+  }
+}
 
 // box-shadow
 @mixin shadow {
@@ -20,7 +111,7 @@
 }
 
 // ライン
-@mixin hoverLine($color: $text-color, $first: false) {
+@mixin hoverLine($color: $color-text, $first: false) {
   @include bp(pc) {
     position: relative;
     @if $first {
@@ -164,96 +255,6 @@
     transition: opacity 0.3s;
     &:hover {
       opacity: 0.8;
-    }
-  }
-} // H1〜H4
-@mixin h_style() {
-  // 共通
-  @include maruGothic();
-}
-@mixin pc_h($type) {
-  @if $type == 1 {
-    font-size: 4.6rem;
-    line-height: 1.8;
-    font-weight: $weight-m;
-  } @else if $type == 2 {
-    font-size: 4rem;
-    line-height: 1.8;
-    font-weight: $weight-m;
-  } @else if $type == 3 {
-    font-size: 2.6rem;
-    line-height: 1.6;
-    font-weight: $weight-b;
-  } @else if $type == 4 {
-    font-size: 2.4rem;
-    line-height: 1.6;
-    letter-spacing: 0.03em;
-    font-weight: $weight-b;
-  } @else if $type == 5 {
-    font-size: 2rem;
-    line-height: 1.6;
-    font-weight: $weight-b;
-  } @else if $type == 6 {
-    font-size: 1.8rem;
-    line-height: 1.6;
-    font-weight: $weight-b;
-  }
-}
-@mixin sp_h($type) {
-  @if $type == 1 {
-    font-size: 3.4rem;
-    line-height: 1.2;
-  } @else if $type == 2 {
-    font-size: 3rem;
-    letter-spacing: 1.2;
-  } @else if $type == 3 {
-    font-size: 2.5rem;
-    line-height: 1.5;
-  } @else if $type == 4 {
-    font-size: 2.2rem;
-    line-height: 1.4;
-  } @else if $type == 5 {
-    font-size: 2rem;
-    line-height: 1.2;
-  } @else if $type == 6 {
-    font-size: 1.7rem;
-    line-height: 1.2;
-  }
-}
-
-@mixin h($type: "", $wid: "") {
-  @for $i from 1 through 6 {
-    @if $type == $i {
-      @include h_style();
-      @if $wid == "" {
-        @include pc_h($i);
-        @include bp(sp) {
-          @include sp_h($i);
-        }
-      }
-      @if $wid == "pc" {
-        @include pc_h($i);
-      }
-      @if $wid == "sp" {
-        @include sp_h($i);
-      }
-    }
-  }
-}
-
-// text
-@mixin txt($type: "", $siz: "") {
-  @if $type== "body" {
-    font-weight: $weight-b;
-    letter-spacing: 0em;
-    line-height: 1.6;
-    @include max(fz, 16);
-    @if $siz== "" and $siz == main {
-      line-height: 1.6;
-    } @else if $siz == main_bold {
-      font-weight: $weight-b;
-    } @else if $siz == main_link {
-      text-decoration: underline;
     }
   }
 }
@@ -423,7 +424,7 @@ $propertys: (
   "radius": border-radius,
   "gap": gap,
   "gapR": row-gap,
-  "gapC": column-gap,
+  "gapC": column-gap
 );
 
 // vw
@@ -455,36 +456,14 @@ $propertys: (
 // unquote Clamp
 
 @mixin clamp($pro, $base, $wid: "") {
-  $valuePC: unquote(
-    "clamp(" + calc($base * 0.8) + "px," + calc($base / $pc-w * 100) + "vw," +
-      ($base * 1.2) + "px)"
-  );
-  $valueSP: unquote(
-    "clamp(" + calc($base * 0.8) + "px," + calc($base / $sp-w * 100) + "vw," +
-      ($base * 1.2) + "px)"
-  );
+  $valuePC: unquote("clamp(" + calc($base * 0.8) + "px," + calc($base / $pc-w * 100) + "vw," + ($base * 1.2) + "px)");
+  $valueSP: unquote("clamp(" + calc($base * 0.8) + "px," + calc($base / $sp-w * 100) + "vw," + ($base * 1.2) + "px)");
 
   @each $name, $property in $propertys {
     @if #{$property} == fz {
       @if $base <= 12 {
-        $valuePC: unquote(
-          "clamp(" +
-            $base +
-            "px," +
-            calc($base / $pc-w * 100) +
-            "vw," +
-            ($base * 1.2) +
-            "px)"
-        );
-        $valueSP: unquote(
-          "clamp(" +
-            $base +
-            "px," +
-            calc($base / $sp-w * 100) +
-            "vw," +
-            ($base * 1.2) +
-            "px)"
-        );
+        $valuePC: unquote("clamp(" + $base + "px," + calc($base / $pc-w * 100) + "vw," + ($base * 1.2) + "px)");
+        $valueSP: unquote("clamp(" + $base + "px," + calc($base / $sp-w * 100) + "vw," + ($base * 1.2) + "px)");
       }
     }
     @if $pro == $name {
@@ -510,22 +489,48 @@ $propertys: (
   }
 }
 @mixin max($pro, $base, $wid: "") {
-  $valuePC: unquote(
-    "max(" + calc($base / $pc-w) * 100 + "vw," + calc($base * 0.73) + "px)"
-  );
-  $valueSP: unquote(
-    "max(" + calc($base / $sp-w * 100) + "vw," + calc($base * 0.73) + "px)"
-  );
+  $valuePC: unquote("max(" + calc($base / $pc-w) * 100 + "vw," + calc($base * 0.73) + "px)");
+  $valueSP: unquote("max(" + calc($base / $sp-w * 100) + "vw," + calc($base * 0.73) + "px)");
 
   @each $name, $property in $propertys {
     @if #{$property} == fz {
       @if $base <= 12 {
-        $valuePC: unquote(
-          "max(" + calc($base / $pc-w * 100) + "vw," + $base + "px)"
-        );
-        $valueSP: unquote(
-          "max(" + calc($base / $sp-w * 100) + "vw," + $base + "px)"
-        );
+        $valuePC: unquote("max(" + calc($base / $pc-w * 100) + "vw," + $base + "px)");
+        $valueSP: unquote("max(" + calc($base / $sp-w * 100) + "vw," + $base + "px)");
+      }
+    }
+    @if $pro == $name {
+      @if $wid == "" {
+        @include bp(pc) {
+          #{$property}: $valuePC;
+        }
+        @include bp(sp) {
+          #{$property}: $valueSP;
+        }
+      }
+      @if $wid == pc {
+        @include bp(pc) {
+          #{$property}: $valuePC;
+        }
+      }
+      @if $wid == sp {
+        @include bp(sp) {
+          #{$property}: $valueSP;
+        }
+      }
+    }
+  }
+}
+
+@mixin min($pro, $base, $wid: "") {
+  $valuePC: unquote("min(" + calc($base / $pc-w * 100) + "vw," + $base + "px)");
+  $valueSP: unquote("min(" + calc($base / $sp-w * 100) + "vw," + $base + "px)");
+
+  @each $name, $property in $propertys {
+    @if #{$property} == fz {
+      @if $base <= 12 {
+        $valuePC: unquote("min(" + calc($base / $pc-w * 100) + "vw," + $base + "px)");
+        $valueSP: unquote("min(" + calc($base / $sp-w * 100) + "vw," + $base + "px)");
       }
     }
     @if $pro == $name {
