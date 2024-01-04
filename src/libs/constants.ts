@@ -15,6 +15,7 @@ export const pageInfo = {
   top: {
     pageTitle: "",
     pageDesc: "",
+    pageClass: "pageTop",
     pageNoindex: true,
   },
   page404: {

@@ -2,15 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import { pageInfo } from "../libs/constants";
 const pageKey = "top";
-const className = "pageTop";
-const { pageTitle } = pageInfo[pageKey];
-
-const title = pageTitle;
+const { pageTitle, pageClass } = pageInfo[pageKey];
 ---
 
-<Layout pageTitle={title} pageClass={className}>
+<Layout pageTitle={pageTitle} pageClass={pageClass}>
   <p>テキスト</p>
- 
 </Layout>
 <style lang="scss">
   p {
