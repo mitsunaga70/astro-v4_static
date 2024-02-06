@@ -1,22 +1,22 @@
 import $ from 'jquery';
 // Nav Toggle
 export const accordionFunc = () => {
-  $('[data-accordion]').each(function () {
-    var $parent = $(this),
-      $trigger = $parent.find('[data-accordion-trigger]'),
-      $content = $parent.find('[data-accordion-content]');
+  function initAccordion($element: JQuery) {
+    var $trigger = $element.find("[data-accordion-trigger]").first(),
+      $content = $element.find("[data-accordion-content]").first();
 
-    $content.hide();
-    $trigger.on('click', function () {
-      $content.stop().slideToggle('easeInOutQuad');
-      $parent.stop().toggleClass('is-active');
-      return false;
-    });
+    if (!$element.hasClass("is-active")) {
+      $content.hide();
+    }
 
-    $(function () {
-      if ($parent.hasClass('is-active')) {
-        $content.show();
-      }
+    $trigger.on("click", function (event) {
+      event.stopPropagation();
+      $content.stop().slideToggle("easeInOutQuad");
+      $element.toggleClass("is-active");
     });
+  }
+
+  $("[data-accordion]").each(function () {
+    initAccordion($(this));
   });
 }
